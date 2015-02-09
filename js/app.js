@@ -6,6 +6,9 @@ App.Router.map(function() {
 	});
 });
 
+/*
+ * Default landing page, list all states
+ */
 App.IndexRoute = Ember.Route.extend({
 	model: function() {
 		return Ember.$.getJSON('zone_list.json').then(function(data) {
@@ -18,6 +21,9 @@ App.IndexRoute = Ember.Route.extend({
 	},
 });
 
+/* 
+ * Selected state view, with link to zones.
+ */
 App.StateRoute = Ember.Route.extend({
 	model: function(params) {
 		return Ember.$.getJSON('zone_list.json')
@@ -39,6 +45,10 @@ App.StateController = Ember.ArrayController.extend({
 	state: null
 });
 
+/* 
+ * Link to zone specific page
+ * unused for the moment
+ */
 App.ZoneRoute = Ember.Route.extend({
 	model: function(params) {
 		return { 'zone_code': params.zone_code,
