@@ -2,26 +2,47 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Ember Starter Kit</title>
+  <title>JAKIM eSolat Linker</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
   <script type="text/x-handlebars">
-    <h2>Welcome to Ember.js</h2>
+    <h2>JAKIM eSolat linker</h2>
+	<ol>
+		<li>Pilih lokasi anda</li>
+		<li>Klik pautan dan bookmark halaman tersebut</li>
+		<li>Buka melalui bookmark untuk terus ke halaman lokasi yang anda pilih</li>
+	</ol>
 
     {{outlet}}
   </script>
 
   <script type="text/x-handlebars" id="index">
-    <ul>
+	<ul>
     {{#each item in model}}
-      <li>{{item}}</li>
+		<li>{{#link-to 'state' item.code}}{{item.name}}{{/link-to}}</li>
     {{/each}}
-    </ul>
+	</ul>
+  </script>
+
+  <script type="text/x-handlebars" id="state">
+	<ul>
+	{{#each item in model}}
+		<li>{{#link-to 'zone' item.code}}{{item.desc}}{{/link-to}}</li>
+	{{/each}}
+	</ul>
+	{{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="zone">
+	<p>Pautan anda di bawah. Sila buka dan bookmark untuk kemudahan anda</p>
+    <a {{bind-attr href=model.zone_url}}>{{model.zone_code}} - Pautan ke eSolat JAKIM</a>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script src="js/libs/handlebars-v2.0.0.js"></script>
   <script src="js/libs/ember-1.9.1.js"></script>
   <script src="js/app.js"></script>
