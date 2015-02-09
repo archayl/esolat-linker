@@ -46,3 +46,6 @@ App.ZoneRoute = Ember.Route.extend({
 	},
 });
 
+Ember.Handlebars.helper('format-link', function(code, desc) {
+	return new Handlebars.SafeString('<a href="http://www2.e-solat.gov.my/solatE.php?kod='+code+'&lang=BM">'+desc+'</a>');
+});

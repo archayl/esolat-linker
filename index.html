@@ -30,7 +30,7 @@
   <script type="text/x-handlebars" id="state">
 	<ul>
 	{{#each item in model}}
-		<li>{{#link-to 'zone' item.code}}{{item.desc}}{{/link-to}}</li>
+		<li>{{{format-link item.code item.desc}}}</li>
 	{{/each}}
 	</ul>
 	{{outlet}}
