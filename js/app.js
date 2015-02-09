@@ -40,11 +40,6 @@ App.StateRoute = Ember.Route.extend({
 	},
 });
 
-App.StateController = Ember.ArrayController.extend({
-	queryParams: ['state'],
-	state: null
-});
-
 /* 
  * Link to zone specific page
  * unused for the moment
